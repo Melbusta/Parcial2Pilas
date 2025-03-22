@@ -6,7 +6,27 @@ public class Metodos {
     private Scanner sc = new Scanner(System.in);
 
     public void registrarCredito(String usuario, double monto, double interes, int plazo) {
-        pila.push(new Credito(usuario, monto, interes, plazo));
+        boolean encontrado = false;
+        Stack<Credito> temp = new Stack<>();
+        while (!pila.isEmpty()) {
+            Credito c = pila.pop();
+            if (c.getUsuario().equals(usuario)) {
+                c.setMonto(c.getMonto() + monto);
+                c.setInteres((c.getInteres() + interes) / 2);
+                c.setPlazo(c.getPlazo() + plazo);
+                encontrado = true;
+            }
+            temp.push(c);
+        }
+
+        while (!temp.isEmpty()) {
+            pila.push(temp.pop());
+        }
+    
+        if (!encontrado) {
+            pila.push(new Credito(usuario, monto, interes, plazo));
+        }
+    
         System.out.println("Crédito registrado correctamente.");
     }
 
