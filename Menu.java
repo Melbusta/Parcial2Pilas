@@ -50,6 +50,9 @@ public class Menu {
                     usuario = sc.nextLine();
                     metodos.eliminarCredito(usuario);
                     break;
+                case 5:
+                    metodos.MostrarCredito();
+                     break;
                 case 0:
                     System.out.println("Saliendo...");
                     break;
