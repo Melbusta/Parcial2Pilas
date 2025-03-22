@@ -81,4 +81,22 @@ public class Metodos {
             System.out.println("Usuario no encontrado.");
         }
     }
+        public void MostrarCredito() {
+        System.out.print("Ingrese el usuario: ");
+        String usuario = sc.next();
+        boolean encontrado = false;
+    
+        for (Credito o : pila) {
+            if (o.getUsuario().equalsIgnoreCase(usuario)) {
+                String mensaje = "Usuario: " + o.getUsuario() + ", Monto: $" + o.getMonto() + ", Interés: " + o.getInteres()
+                        + "%, Plazo: " + o.getPlazo() + " meses";
+                System.out.println(mensaje);
+                encontrado = true;
+            }
+        }
+    
+        if (!encontrado) {
+            System.out.println("No se encontró un crédito para el usuario: " + usuario);
+        }
+    }
 }
